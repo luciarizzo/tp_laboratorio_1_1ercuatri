@@ -8,8 +8,8 @@ a) Calcular la suma (A+B)
 b) Calcular la resta (A-B)
 c) Calcular la division (A/B)
 d) Calcular la multiplicacion (A*B)
-e) Calcular el factorial (A!) // tmb el factorial de B
-4. Informar resultados // LIMPIAR VALORES GUARDADOS LUEGO DE IMPRIMIR RESULTADOS????
+e) Calcular el factorial (A!)
+4. Informar resultados
 a) “El resultado de A+B es: r”
 b) “El resultado de A-B es: r”
 c) “El resultado de A/B es: r” o “No es posible dividir por cero”
@@ -36,7 +36,7 @@ int main(void) {
 	int segundoOperando;
 	int suma;
 	int resta;
-	int division;
+	float division;
 	int multiplicacion;
 	int factorialPrimerOperando;
 	int factorialSegundoOperando;
@@ -66,20 +66,20 @@ int main(void) {
 				"\n 3B. RESTA"
 				"\n 3C. DIVISION"
 				"\n 3D. MULTIPLICACION"
-				"\n 3E. FACTORIAL");
+				"\n 3E. FACTORIAL (Recuerde que si ingresa un número decimal, el factorial sólo se calculará con la parte entera del mismo.)\n");
 		printf("\n4. Informar resultados");
 		printf("\n5. Salir\n");
 		scanf("%d", &opcion);
 		switch(opcion){
 		case 1:
-			printf("\n Ingrese el 1er operando\n");
+			printf("\n Ingrese el 1er operando (debe ser un número entero).\n");
 			scanf("%d", &primerOperando);
 			flagPrimerOperando = 1;
 			flagOpcionUno = 1;
 			break;
 		case 2:
 			if(flagPrimerOperando){
-			printf("\n Ingrese el 2do operando\n");
+			printf("\n Ingrese el 2do operando (debe ser un número entero)\n");
 			scanf("%d", &segundoOperando);
 			flagSegundoOperando = 1;
 			flagOpcionDos = 1;
@@ -94,19 +94,15 @@ int main(void) {
 			multiplicacion = multiplicar(primerOperando, segundoOperando);
 			factorialPrimerOperando = realizarFactorial(primerOperando);
 			factorialSegundoOperando = realizarFactorial(segundoOperando);
-			if (division == -1){
+			if (division == -1) {
 				printf("\n Error: no es posible dividir por CERO.\n Por favor REINTENTAR.\n");
 				opcion = 5;
-			} else if(factorialPrimerOperando == -1 || factorialSegundoOperando == -1){
-				printf("\n Error: no se puede calcular el factorial de un número negativo.\n Por favor REINTENTAR\n");
-				opcion = 5;
-			} else if (flagOpcionUno == 0){
+			} else if (flagOpcionUno == 0) {
 				printf("\n Error: debe introducir el primer operando para realizar operaciones. Por favor REINTENTAR\n");
-			} else if (flagOpcionDos == 0){
+			} else if (flagOpcionDos == 0) {
 				printf("\n Error: debe introducir el segundo operando para realizar operaciones. Por favor REINTENTAR\n");
 			}
-			else
-			{
+			else{
 				printf("Operaciones realizadas exitosamente.\n Para visualizar resultados, elija opción 4 como indica el menú.\n");
 			};
 			flagOpcionTres = 1;
@@ -115,18 +111,22 @@ int main(void) {
 			if (flagOpcionTres){
 			printf("\nA El resultado de la SUMA es: %d", suma);
 			printf("\nB El resultado de la RESTA es: %d", resta);
-			printf("\nC El resultado de la DIVISION es: %d", division);
+			printf("\nC El resultado de la DIVISION es: %f", division);
 			printf("\nD El resultado de la MULTIPLICACION es: %d", multiplicacion);
-			printf("\nE El FACTORIAL del primer número ingresado  %d  es: %d \n El FACTORIAL del segundo número ingresado  %d  es: %d \n", primerOperando, factorialPrimerOperando, segundoOperando, factorialSegundoOperando);
-			flagPrimerOperando = 0;
-			flagSegundoOperando = 0;
-			} else {
-				printf("\nError: para imprimir resultados primero debe realizar operaciones eligiendo la opción 3 del menú\n");
+				if(factorialPrimerOperando == -1 || factorialSegundoOperando == -1){
+					printf("\n Error: no se puede calcular el factorial de un número negativo.\n Por favor REINTENTAR\n");
+				} else if(factorialPrimerOperando != 0 || factorialSegundoOperando != 0 ){
+				printf("\nE El FACTORIAL del primer número ingresado  %d  es: %d \n El FACTORIAL del segundo número ingresado  %d  es: %d \n", primerOperando, factorialPrimerOperando, segundoOperando, factorialSegundoOperando);
+				flagPrimerOperando = 0;
+				flagSegundoOperando = 0;
+				}else {
+					printf("\nError: para imprimir resultados primero debe realizar operaciones eligiendo la opción 3 del menú\n");
+				}
 			}
 			break;
 		default:
 			printf("\nError: por favor, elija una opción del menú válida.\n");
 		}
-	}while(opcion!=5);
+	}while(opcion>5 || opcion<5);
 	return EXIT_SUCCESS;
 }
