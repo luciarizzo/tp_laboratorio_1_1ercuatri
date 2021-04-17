@@ -124,9 +124,7 @@ int main(void) {
 				}
 			}
 			break;
-		default:
-			printf("\nError: por favor, elija una opción del menú válida.\n");
 		}
-	}while(opcion>5 || opcion<5);
+	}while(opcion!=5);
 	return EXIT_SUCCESS;
 }
