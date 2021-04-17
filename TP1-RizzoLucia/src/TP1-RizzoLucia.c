@@ -66,7 +66,7 @@ int main(void) {
 				"\n 3B. RESTA"
 				"\n 3C. DIVISION"
 				"\n 3D. MULTIPLICACION"
-				"\n 3E. FACTORIAL (Recuerde que si ingresa un número decimal, el factorial sólo se calculará con la parte entera del mismo.)\n");
+				"\n 3E. FACTORIAL\n");
 		printf("\n4. Informar resultados");
 		printf("\n5. Salir\n");
 		scanf("%d", &opcion);
@@ -114,7 +114,7 @@ int main(void) {
 			printf("\nC El resultado de la DIVISION es: %f", division);
 			printf("\nD El resultado de la MULTIPLICACION es: %d", multiplicacion);
 				if(factorialPrimerOperando == -1 || factorialSegundoOperando == -1){
-					printf("\n Error: no se puede calcular el factorial de un número negativo.\n Por favor REINTENTAR\n");
+					printf("\n E Error: no se puede calcular el factorial de un número negativo.\n Por favor REINTENTAR\n");
 				} else if(factorialPrimerOperando != 0 || factorialSegundoOperando != 0 ){
 				printf("\nE El FACTORIAL del primer número ingresado  %d  es: %d \n El FACTORIAL del segundo número ingresado  %d  es: %d \n", primerOperando, factorialPrimerOperando, segundoOperando, factorialSegundoOperando);
 				flagPrimerOperando = 0;
